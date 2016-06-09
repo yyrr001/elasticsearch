@@ -41,9 +41,9 @@ PUT services/_mapping/service
                         "neighbors": true,
                         "default": "u33"
                     }
+                }
             }
         }
-    }
     }
 }
 --------------------------------------------------
@@ -138,8 +138,8 @@ PUT services/service/1
         "input": ["knacksack", "backpack", "daypack"],
         "context": {
             "color": ["red", "yellow"]
-            }
         }
+    }
 }
 --------------------------------------------------
 
@@ -210,7 +210,7 @@ locations.
         "default": {
             "lat": 0.0,
             "lon": 0.0
-    }
+        }
     }
 }
 --------------------------------------------------
@@ -229,11 +229,7 @@ PUT services/service/1
     "name": "some hotel 1",
     "suggest_field": {
         "input": ["my hotel", "this hotel"],
-        "context": {
-            "location": {
-                    "lat": 0,
-                    "lon": 0
-        "contexts": [
+        "contexts": {
             "location": [
                 {
                     "lat": 43.6624803,
@@ -243,6 +239,7 @@ PUT services/service/1
                     "lat": 43.6624718,
                     "lon": -79.3873227
                 }
+            ]
         }
     }
 }
@@ -289,14 +286,14 @@ POST services/_suggest
         "completion" : {
             "field" : "suggest_field",
             "size": 10,
-                        "context": {
+            "context": {
                 "location": {
                     "value": {
                         "lat": 0,
                         "lon": 0
-                        },
+                    },
                     "precision": "1km"
-                    }
+                }
             }
         }
     }
@@ -318,9 +315,9 @@ POST services/_suggest
             "size": 10,
             "context": {
                 "location": {
-                        "lat": 0,
-                        "lon": 0,
-                        "precision": "1km"
+                    "lat": 0,
+                    "lon": 0,
+                    "precision": "1km"
                 }
             }
         }
