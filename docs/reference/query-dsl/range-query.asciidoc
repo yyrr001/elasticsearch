@@ -42,7 +42,7 @@ specified using <<date-math>>:
     "range" : {
         "date" : {
             "gte" : "now-1d/d",
-            "lt" :  "now/d"
+            "lte" :  "now/d"
         }
     }
 }
